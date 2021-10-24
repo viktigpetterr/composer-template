@@ -1,0 +1,35 @@
+{
+    "name": "viktigpetterr/composer-template",
+    "type": "project",
+    "description": "Composer package template",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "viktigpetterr",
+            "email": "viktor.grasljunga@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "viktigpetterr\\Template\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "viktigpetterr\\Template\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text --testdox",
+        "phpstan": "vendor/bin/phpstan analyse src tests --level 5",
+        "ecs": "vendor/bin/ecs",
+        "ecs-fix": "vendor/bin/ecs --fix",
+        "static": ["@phpstan", "@ecs"],
+        "post-create-project-cmd": "php .template/setup.php"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "phpstan/phpstan": "^0.12.99",
+        "symplify/easy-coding-standard": "^9.4"
+    }
+}
